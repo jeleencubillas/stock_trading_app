@@ -15,12 +15,4 @@ class User < ApplicationRecord
   def set_default_role
     self.role ||= :buyer
   end
-
-  # private
-  # def validate_age
-  #   if date_of_birth.present? && date_of_birth > 18.years.ago.to_s
-  #     errors.add('You should be 18 years or older.')
-  #   end
-  # end
-
 end
