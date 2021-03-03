@@ -8,7 +8,7 @@ class User < ApplicationRecord
          validates :first_name, presence: true
          validates :last_name, presence: true
          validates :date_of_birth, presence: true
-         validate :validate_age
+        #  validate :validate_age
 
   enum role: [:buyer, :broker]
 
@@ -16,11 +16,11 @@ class User < ApplicationRecord
     self.role ||= :buyer
   end
 
-  private
-  def validate_age
-    if date_of_birth.present? && date_of_birth > 18.years.ago.to_d
-      errors.add('You should be 18 years or older.')
-    end
-  end
+  # private
+  # def validate_age
+  #   if date_of_birth.present? && date_of_birth > 18.years.ago.to_s
+  #     errors.add('You should be 18 years or older.')
+  #   end
+  # end
 
 end

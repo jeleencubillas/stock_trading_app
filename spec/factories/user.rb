@@ -4,6 +4,6 @@ FactoryBot.define do
     password {"123456"}
 		first_name { "Test" }
 		last_name { "Tester" }
-		age { 19 }
+		date_of_birth { "16/05/1993" }
   end
 end
