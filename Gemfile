@@ -62,3 +62,6 @@ gem 'devise'
 
 # Use .env file for mail config
 gem 'dotenv-rails'
+
+# Use IEX for Stock Prices
+gem 'iex-ruby-client'
