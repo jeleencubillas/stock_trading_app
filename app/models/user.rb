@@ -28,7 +28,7 @@ class User < ApplicationRecord
   end
 
   def validate_age
-    if date_of_birth > 18.years.ago.to_i
+    if date_of_birth < 18.years.ago.to_i
       errors.add(:date_of_birth, 'You should be over 18 years old to sign up.')
     end
   end
