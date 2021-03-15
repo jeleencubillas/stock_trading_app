@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe "user sign up" do
-    it "Shoud not save without first name" do
+    it "1. should not save without first name" do
       @user = User.new()
       @user.email = 'testing@email.com'
       @user.password = '123456'
@@ -12,7 +12,7 @@ RSpec.describe User, type: :model do
       expect(@user).to_not be_valid
     end
 
-    it "Shoud not save without last name" do
+    it "2. should not save without last name" do
       @user = User.new()
       @user.email = 'testing@email.com'
       @user.password = '123456'
@@ -22,7 +22,7 @@ RSpec.describe User, type: :model do
       expect(@user).to_not be_valid
     end
 
-    it "Shoud not save if age < 18" do
+    it "3. should not save if age < 18" do
       @user = User.new()
       @user.email = 'testing@email.com'
       @user.password = '123456'
