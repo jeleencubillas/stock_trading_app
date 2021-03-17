@@ -1,3 +1,13 @@
-<div> <%= @stock['company_name'] %> </div>
-<div> <%= @stock['avg_total_volume'] %> </div>
-<div> <%= @stock['previous_close'] %> </div>
+<%= form_with url: stocks_search_path, method: :get do |form| %>
+    <%= form.label :query, "Search for:" %>
+    <%= form.text_field :query %>
+    <%= form.submit "search" %>
+<% end %>
+
+<% if @stock.present? %>
+    <h1> Results </h1>
+    
+<% end %>
+<%# <div> <%= @stock['company_name'] %> 
+<%# <div> <%= @stock['avg_total_volume'] %> 
+<%# <div> <%= @stock['previous_close'] %> 

@@ -1,10 +1,19 @@
 class StocksController < ApplicationController
   before_action :initialize_new_client
   def index
-    @stock = @client.quote()
+    @stocks = @client.crypto
   end
 
   def show
-    @stock = @client.quote()
+  end
+
+  def search
+    @stock = @client.crypto(params[:query])
+    render "stocks/show"
+  end
+
+  private
+  def crypto_params
+    params[:query]
   end
 end
