@@ -1,0 +1,13 @@
+<table>
+  <th>Username</th>
+  <th>Email Address</th>
+  <th>Created on</th>
+
+  <% @admins.each do |admin| %>
+    <tr>
+      <td><%= admin.username %></td>
+      <td><%= admin.email %></td>
+      <td><%= admin.created_at.to_formatted_s(:long) %></td>
+    </tr>
+  <% end %>
+</table>

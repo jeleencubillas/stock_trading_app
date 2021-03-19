@@ -1,0 +1,63 @@
+<%= form_with model: @user, local: true do |f| %>
+
+  <div class="errors-container">
+    <p>
+        <% if @user.errors.any? %>
+            <ul>    
+                <% @user.errors.full_messages.each do |message| %>
+                    <li> <%= message %> </li>
+                <% end %>
+            </ul>
+        <% end %>
+    </p>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_of_birth %><br />
+    <%= f.date_field :date_of_birth %>
+  </div>
+
+  <div class="field">
+    <label>Role:</label><br />
+    <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
+  </div>
+
+  <div class="field">
+    <label>Status:</label><br />
+    <%= f.select(:approved, User.approved.keys.map {|approved| [approved.titleize,approved]}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<% end %>
