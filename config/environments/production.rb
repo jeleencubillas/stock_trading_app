@@ -75,8 +75,8 @@ Rails.application.configure do
     domain: "example.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password:ENV["GMAIL_PASSWORD"]
+    user_name: Rails.application.credentials[:gmail_username],
+    password: Rails.application.credentials[:gmail_password]
   }
 
   config.action_mailer.default_url_options = { :host => 'lupin-app.herokuapp.com' }

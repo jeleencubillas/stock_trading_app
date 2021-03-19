@@ -1,0 +1,46 @@
+<div id="sidebar">
+
+  <div id="sidebar-container">
+
+    <a href="/">
+        <div class="logo-container">
+          <h5>Lupin</h5>
+        </div>
+    </a>
+
+    <div class="sidebar-nav-container">
+      <% if current_admin %>
+        <nav>
+          <ul>
+            <li><%= link_to 'Admins', admins_path, class: "low-contrast" %></li>
+            <li><%= link_to 'Users', users_path, class: "low-contrast" %></li>
+            <li><%= link_to 'Transactions', transactions_path, class: "low-contrast" %></li>
+            <li><%= link_to 'Logout', transactions_path, class: "low-contrast" %></li>
+          </ul>
+        </nav>
+      <% elsif User.broker %>
+        <nav>
+          <ul>
+            <li><%= link_to 'Account', root_path, class: "low-contrast" %></li>
+            <li><%= link_to 'Stocks', root_path, class: "low-contrast" %></li>
+            <li><%= link_to 'Portfolio', root_path, class: "low-contrast" %></li>
+            <li><%= link_to 'Transactions', transactions_path, class: "low-contrast" %></li>
+            <li><%= link_to 'Logout', transactions_path, class: "low-contrast" %></li>
+          </ul>
+        </nav>
+      <% elsif User.buyer %>
+        <nav>
+          <ul>
+            <li><%= link_to 'My Account', admins_path, class: "low-contrast" %></li>
+            <li><%= link_to 'My Portfolio', users_path, class: "low-contrast" %></li>
+            <li><%= link_to 'Logout', transactions_path, class: "low-contrast" %></li>
+          </ul>
+        </nav>
+      <% end %>
+    </div>
+
+      <p class="tiny low-contrast">Crafted with <i class="lni lni-heart-filled"></i> using Ruby on Rails.</p>
+
+  </div>
+
+</div>

@@ -1,9 +1,24 @@
 <table>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.email %>
-        <td><%= user.role %>
-        <td><%= user.approved.to_s %>
-      </tr>
-    <% end %>
+  <th>Email Address</th>
+  <th>First Name</th>
+  <th>Last Name</th>
+  <th>Date of Birth</th>
+  <th>Role</th>
+  <th>Actions</th>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+      <td><%= user.date_of_birth %></td>
+      <td><%= user.role.capitalize %></td>
+      <td>
+        <%= link_to "View", user_path(user) %>&emsp;
+        <%= link_to "Edit", edit_user_path(user) %>&emsp;
+        <%= link_to "Delete", user_path(user), 
+          method: :delete,
+          data: { confirm: "Are you sure you want to delete this confession? This action cannot be reversed." } %>
+      </td>
+    </tr>
+  <% end %>
 </table>

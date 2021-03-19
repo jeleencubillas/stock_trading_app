@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get "/pages/:page" => "pages#show"
   root "pages#show", page: "home"
 
-  resources :users, only: [:index, :update, :edit]
+  resources :admins, only: [:index]
+  resources :users, path: "manage/users"
+  resources :transactions
 
   devise_for :admins,
     path: "admins",
