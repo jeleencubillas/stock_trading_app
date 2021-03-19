@@ -4,7 +4,32 @@
     <%= form.submit "search" %>
 <% end %>
 
-<% if @stock.present? %>
-    <h1> Results </h1>
-    
-<% end %>
+<% if @user.broker? %>
+  <h1> Results </h1>
+    <%= @stocks.each do |stock| %>
+      <div> 
+        <h3><%= stock.symbol %></h3>
+        <p><%= stock.name %> </p> 
+        <p> Opening price
+          <%= stock.opening_price %>
+            Closing price
+          <%= stock.closing_price %> 
+        </p>
+      <div>
+  <% end %>
+<% end  %>
+
+<% if @user.buyer? %>
+  <h1> Results </h1>
+    <%= @stocks.each do |stock| %>
+      <div> <%= stock.users %>
+        <h3><%= stock.symbol %></h3>
+        <p><%= stock.name %> </p> 
+        <p> Opening price
+          <%= stock.opening_price %>
+            Closing price
+          <%= stock.closing_price %> 
+        </p>
+      <div>
+  <% end %>
+<% end  %>

@@ -1,0 +1,33 @@
+<%= form_with url: stocks_search_path, method: :get do |form| %>
+    <%= form.label :query, "Search for:" %>
+    <%= form.text_field :query %>
+    <%= form.submit "search" %>
+<% end %>
+
+<% if @user.broker? %>
+  <% if @stock.present? %>
+  <h1> Results </h1>
+      <div> 
+      <%= link_to "Add stock", stocks_create_path({symbol: @stock.symbol, price: @stock.latest_price}), method: :post %>
+        <h3><%= @stock.symbol %></h3>
+        <p> Latest Price
+          <%= @stock.latest_price_dollar %>
+        </p>
+      <div>
+  <% end %>
+<% end %>
+
+<% if @user.buyer? %>
+    <% if @stocks_from_db.present? %>
+    <h1> Results </h1>
+    <% @stocks_from_db.each do |stock| %>
+    <%= link_to "Add stock", stocks_create_path({symbol: stock.symbol, price: stock.opening_price}), method: :post %>
+      <div> <%= stock.user.first_name %>
+        <h3><%= stock.symbol %></h3>
+        <p> Latest Price
+          <%= stock.opening_price %>
+        </p>
+      <div>
+    <% end %>
+  <% end %>
+<% end  %>
