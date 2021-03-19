@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  
-  # before_action :configure_sign_up_params, :configure_sign_up_params
 
   def index
     @users = User.all
@@ -49,13 +47,5 @@ class UsersController < ApplicationController
   def user_params
       params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :date_of_birth, :role, :approved)
   end
-
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:create, keys: [:first_name, :last_name, :date_of_birth, :role, :approved])
-  # end
-  
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:update, keys: [:first_name, :last_name, :date_of_birth, :role, :approved])
-  # end
 
 end
