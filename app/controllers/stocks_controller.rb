@@ -12,7 +12,7 @@ class StocksController < ApplicationController
     @user = current_user
     if crypto_params.present?
       @stock = @client.crypto(crypto_params)
-      @stocks_from_db = Stock.where(symbol: crypto_params)
+      @stocks_from_db = Stock.get_brokers_crypto(crypto_params)
     end
   end
 

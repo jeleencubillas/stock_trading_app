@@ -21,11 +21,11 @@
     <% if @stocks_from_db.present? %>
     <h1> Results </h1>
     <% @stocks_from_db.each do |stock| %>
-    <%= link_to "Add stock", stocks_create_path({symbol: stock.symbol, price: stock.opening_price}), method: :post %>
-      <div> <%= stock.user.first_name %>
-        <h3><%= stock.symbol %></h3>
+    <%= link_to "Add stock", stocks_create_path({symbol: stock["symbol"], price: stock["opening_price"]}), method: :post %>
+      <div> <%= stock["first_name"] %>
+        <h3><%= stock["symbol"] %></h3>
         <p> Latest Price
-          <%= stock.opening_price %>
+          <%= stock["opening_price"] %>
         </p>
       <div>
     <% end %>
