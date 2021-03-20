@@ -8,13 +8,13 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: ENV['localhost:3000'] }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    user_name:      ENV['SENDMAIL_USERNAME'],
-    password:       ENV['SENDMAIL_PASSWORD'],
-    domain:         ENV['localhost:3000'],
-    address:       'smtp.gmail.com',
-    port:          '587',
-    authentication: :plain,
-    enable_starttls_auto: true
+    :from => Rails.application.credentials[:from],
+    :user_name =>  Rails.application.credentials[:gmail_username],
+    :password => Rails.application.credentials[:gmail_password],
+    :address => 'smtp.mailtrap.io',
+    :domain => 'smtp.mailtrap.io',
+    :port => '2525',
+    :authentication => :cram_md5
   }
 
   # In the development environment your application's code is reloaded any time
@@ -52,16 +52,6 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = true
-
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: "example.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: Rails.application.credentials[:gmail_username],
-    password: Rails.application.credentials[:gmail_password]
-  }
   
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
