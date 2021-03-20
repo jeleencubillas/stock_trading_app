@@ -2,6 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :stocks
+  has_many :transactions
   
   scope :brokers, -> { where(role: 1)}
 
@@ -10,7 +11,7 @@ class User < ApplicationRecord
          :confirmable
   
   before_validation :set_default_role, :set_default_status, :validate_age
-  after_save :send_admin_mail
+  # after_save :send_admin_mail
          
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -48,7 +49,9 @@ class User < ApplicationRecord
   end
 
   def send_admin_mail
-    ApproveBrokerMailer.new_user_waiting_for_approval(email).deliver
+    if self.role == :broker
+      ApproveBrokerMailer.new_user_waiting_for_approval(email).deliver
+    end
   end
   
 end
