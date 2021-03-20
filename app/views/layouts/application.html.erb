@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
+    <%= favicon_link_tag asset_path('logo-medium.png') %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -15,11 +16,10 @@
   <body>
       <%= render "shared/sidebar" %>
       <div class="main">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-          <div class="container">
-            <%= yield %>
-          </div>
+        <%= render "shared/flash" %>
+        <div class="container">
+          <%= yield %>
+        </div>
       </div>
   </body>
 </html>

@@ -69,14 +69,12 @@ Rails.application.configure do
   
   config.action_mailer.raise_delivery_errors = true
 
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: "smtp-relay.sendinblue.com",
     port: 587,
-    domain: "example.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: Rails.application.credentials[:gmail_username],
-    password: Rails.application.credentials[:gmail_password]
+    user_name: 'noreply.lupinapp@gmail.com',#Rails.application.credentials[:gmail_username]
+    password: 'RaB5r8fqyQNFwI2t'#Rails.application.credentials[:gmail_password]
   }
 
   config.action_mailer.default_url_options = { :host => 'lupin-app.herokuapp.com' }

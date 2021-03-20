@@ -22,12 +22,12 @@
 
 :root {
     --dgray: #1b1b1b;
-    --mgray: #242424d3;
-    --lgray: #80838f;
+    --mgray: #24242488;
+    --lgray: #b3b3b3;
     --white: #ffffff;
     --mbeige: #c88550;
     --lbeige: #dfb28b;
-    --green: #a1d896;
+    --green: #222522;
     --red: #d86060;
 }
 
@@ -47,7 +47,9 @@ body {
     max-width: 100%;
     min-height: 100vh;
     overflow-x: hidden;
-    background-color: var(--dgray);
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
     color: var(--white);
  }
 
@@ -91,25 +93,25 @@ body {
 h1 {
     font-weight: 600;
     font-size: 50px;
-    line-height: 1.1em;
+    line-height: 1.2em;
 }
 
 h2 {
     font-weight: 600;
     font-size: 42px;
-    line-height: 1.2em;
+    line-height: 1.3em;
 }
 
 h3 {
     font-weight: 500;
     font-size: 36px;
-    line-height: 1.2em;
+    line-height: 1.4em;
 }
 
 h4 {
     font-weight: 500;
     font-size: 28px;
-    line-height: 1.4em;
+    line-height: 1.5em;
 }
 
 h5 {
@@ -153,6 +155,26 @@ p.small {
 
 p.tiny {
     font-size: 11px;
+}
+
+.low-contrast {
+    color: var(--lgray);
+}
+
+.mbeige {
+    color: var(--mbeige);
+}
+
+.lbeige {
+    color: var(--lbeige);
+}
+
+.thin {
+    font-weight: 300;
+}
+
+.italic {
+    font-style: italic;
 }
 
 /* Links */
@@ -214,8 +236,8 @@ input, select, textarea {
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     color: var(--white);
-    border: 2px solid var(--lgray);
-    border-radius: 2px;
+    border: 1px solid var(--lgray);
+    border-radius: 6px;
     box-sizing: inherit;
     box-sizing: border-box;
     background-color: var(--dgray);
@@ -226,7 +248,8 @@ textarea {
 }
 
 input:focus, select:focus, textarea:focus {
-    border: 2px solid var(--lgray);
+    border: 1px solid var(--lbeige);
+    border-radius: 8px;
     outline: none;
 }
 
@@ -234,6 +257,11 @@ input[type='submit'] {
     cursor: pointer;
     display: inline-block;
     margin: 15px 0 0; 
+    border: 1px solid var(--mbeige);
+}
+
+input[type='submit']:hover {
+    background-color: var(--mbeige);
 }
 
 label {
@@ -304,14 +332,14 @@ th, td {
     padding: 20px 0;
 }
 
-.logo-container h5 {
-    font-size: 22px;
+.logo-container h4 {
+    font-size: 24px;
     font-weight: 300;
-    letter-spacing: 0.3px;
+    letter-spacing: 0;
 }
 
 #logo-img {
-    width: 52px;
+    width: 42px;
     margin-right: 12px;
 }
 
