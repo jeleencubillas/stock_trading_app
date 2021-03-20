@@ -8,10 +8,13 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: ENV['localhost:3000'] }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "smtp-relay.sendinblue.com",
-    port: 587,
-    user_name: 'noreply.lupinapp@gmail.com',#Rails.application.credentials[:gmail_username]
-    password: 'RaB5r8fqyQNFwI2t'#Rails.application.credentials[:gmail_password]
+    :from => Rails.application.credentials[:from],
+    :user_name =>  Rails.application.credentials[:gmail_username],
+    :password => Rails.application.credentials[:gmail_password],
+    :address => 'smtp.mailtrap.io',
+    :domain => 'smtp.mailtrap.io',
+    :port => '2525',
+    :authentication => :cram_md5
   }
 
   # In the development environment your application's code is reloaded any time

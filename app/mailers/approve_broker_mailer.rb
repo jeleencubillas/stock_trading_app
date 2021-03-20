@@ -1,9 +1,9 @@
 class ApproveBrokerMailer < Devise::Mailer
   default to: -> { Admin.pluck(:email) },
-    from: ENV["GMAIL_USERNAME"]
+    from: "noreply@example.com"
 
   def new_user_waiting_for_approval(email)
     @email = email
-    mail(subject: 'New Broker Awaiting Admin Approval')
+    mail(to: @email, subject: 'New User Awaiting Admin Approval')
   end
 end
